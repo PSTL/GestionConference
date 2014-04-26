@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CFCFCF" >
+
+    <TextView
+        android:id="@+id/tvMesconf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF7F24"
+        android:gravity="center_horizontal"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tvConfDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMesconf"
+        android:background="@drawable/rounded_corner1"
+        android:gravity="center_horizontal"
+        android:text="@string/default_lorem" />
+
+    <RelativeLayout
+        android:id="@+id/confContents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvConfDesc"
+        android:background="@drawable/rounded_corner2" >
+
+        <TextView
+            android:id="@+id/tvConfDatedeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/startdate" />
+
+        <TextView
+            android:id="@+id/tvConfDatedebval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvConfDatedeb"
+            android:layout_marginLeft="86dp"
+            android:layout_toRightOf="@+id/tvConfDatedeb"
+            android:text="@string/textview" />
+
+        <TextView
+            android:id="@+id/tvConfDatefin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvConfDatedeb"
+            android:layout_marginTop="20dp"
+            android:text="@string/enddate" />
+
+        <TextView
+            android:id="@+id/tvConfDatefinval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvConfDatefin"
+            android:layout_alignBottom="@+id/tvConfDatefin"
+            android:layout_alignLeft="@+id/tvConfDatedebval"
+            android:text="@string/textview" />
+
+        <TextView
+            android:id="@+id/tvConfLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvConfDatefin"
+            android:layout_marginTop="20dp"
+            android:text="@string/location" />
+
+        <TextView
+            android:id="@+id/tvConfLocationval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvConfLocation"
+            android:layout_alignBottom="@+id/tvConfLocation"
+            android:layout_alignLeft="@+id/tvConfDatefinval"
+            android:text="@string/textview" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confContents"
+        android:layout_marginTop="20dp" >
+    </ListView>
+
+</RelativeLayout>

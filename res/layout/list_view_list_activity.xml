@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvMesconf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF7F24"
+        android:gravity="center_horizontal"
+        android:text="@string/myconference"
+        android:textSize="35sp" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+    <!-- android:background="@drawable/rounded_corner1" -->
+
+</LinearLayout>

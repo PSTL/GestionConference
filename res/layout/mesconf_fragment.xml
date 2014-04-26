@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <!-- android:background="@android:drawable/dialog_holo_light_frame" -->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:background="#C71585"
+        android:contentDescription="@string/imageViewDescription"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:text="@string/textview"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_alignLeft="@+id/tvTitle"
+        android:text="@string/textview" />
+
+</RelativeLayout> <!-- <TextView -->
+<!-- android:id="@+id/tvMesconf" -->
+<!-- android:layout_width="match_parent" -->
+<!-- android:layout_height="wrap_content" -->
+<!-- android:text="Mes Conferences" -->
+<!-- android:gravity="center_horizontal" -->
+<!-- android:textSize="35sp" -->
+<!-- android:background="#FF7F24"/> -->
+<!-- android:layout_below="@+id/tvMesconf" -->
