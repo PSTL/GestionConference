@@ -3,14 +3,10 @@ package com.example.mesconferences.presentations;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.TimeZone;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.provider.CalendarContract.Calendars;
 import android.provider.CalendarContract.Events;
 import android.support.v4.app.FragmentActivity;
@@ -18,12 +14,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gestionconferences.R;
 import com.example.objetConference.Presentation;
 
-public class PresentationView extends FragmentActivity implements OnClickListener {
+public class PresentationView extends FragmentActivity {
 
   /** Variables needed to manipulate calendar */
 
@@ -43,11 +38,13 @@ public class PresentationView extends FragmentActivity implements OnClickListene
   private TextView location;
 
   private Button addToCalendarButton;
-  private Presentation presentation;
+  private OnClickListener calenderOnClickListener = null;
+
   private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
   private final SimpleDateFormat minuteFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
   private StringBuilder sb = new StringBuilder();
-  public static final String MyPREFERENCES = "MyPrefs";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +60,8 @@ public class PresentationView extends FragmentActivity implements OnClickListene
     addToCalendarButton = (Button) findViewById(R.id.addToCalendar);
 
     Intent intent = getIntent();
-    presentation = (Presentation) intent.getSerializableExtra("PresentationObject");
+    final Presentation presentation =
+        (Presentation) intent.getSerializableExtra("PresentationObject");
 
     title.setText(presentation.getProgramme());
     programme.setText(presentation.getProgramme());
@@ -84,118 +82,47 @@ public class PresentationView extends FragmentActivity implements OnClickListene
 
     location.setText(presentation.getLieu());
 
-    // // Add calendar listener
-    // calenderOnClickListener = new OnClickListener() {
-    //
-    // @Override
-    // public void onClick(View v) {
-    // Calendar begintime = Calendar.getInstance();
-    // begintime = presentation.getDateDebut();
-    //
-    // Calendar endtime = Calendar.getInstance();
-    // endtime = presentation.getDateFin();
-    //
-    // // Intent intent = new Intent(Intent.ACTION_INSERT);
-    // // intent.setData(Events.CONTENT_URI);
-    // // intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, begintime.getTimeInMillis());
-    // // intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endtime.getTimeInMillis());
-    // // intent.putExtra(Events.TITLE, presentation.getProgramme());
-    // // intent.putExtra(Events.DESCRIPTION, presentation.getProgramme());
-    // // intent.putExtra(Events.EVENT_LOCATION, presentation.getLieu());
-    // // intent.putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY);
-    // //
-    // // startActivity(intent);
-    // SharedPreferences sharedpreferences =
-    // getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-    //
-    // sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-    //
-    // boolean calenderCreated = sharedpreferences.getBoolean("ConferenceCalendar", false);
-    //
-    // if (calenderCreated) {
-    // long calId = sharedpreferences.getLong("CalendarID", -1);
-    // if (calId == -1) {
-    // // no calendar account; react meaningfully
-    // return;
-    // }
-    // ContentResolver cr = getContentResolver();
-    // ContentValues values = new ContentValues();
-    // values.put(Events.CALENDAR_ID, calId);
-    // values.put(Events.TITLE, presentation.getProgramme());
-    // values.put(Events.DTSTART, begintime.getTimeInMillis());
-    // values.put(Events.DTEND, endtime.getTimeInMillis());
-    // values.put(Events.EVENT_LOCATION, presentation.getLieu());
-    // values.put(Events.DESCRIPTION, presentation.getAuteur());
-    // values.put(Events.AVAILABILITY, Events.AVAILABILITY_BUSY);
-    // values.put(Events.EVENT_TIMEZONE, TimeZone.getDefault().getDisplayName());
-    // cr.insert(Events.CONTENT_URI, values);
-    //
-    // Toast.makeText(getApplicationContext(), "Presentation event added", Toast.LENGTH_LONG)
-    // .show();
-    // } else {
-    // Toast.makeText(getApplicationContext(), "ERROR: Calendar not yet created",
-    // Toast.LENGTH_LONG).show();
-    //
-    // }
-    // };
-    //
-    // };
+    // Add calendar listener
+    calenderOnClickListener = new OnClickListener() {
 
-    addToCalendarButton.setOnClickListener(this);
+      @Override
+      public void onClick(View v) {
+        Calendar begintime = Calendar.getInstance();
+        begintime = presentation.getDateDebut();
+
+        Calendar endtime = Calendar.getInstance();
+        endtime = presentation.getDateFin();
+
+        Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setData(Events.CONTENT_URI);
+        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, begintime.getTimeInMillis());
+        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endtime.getTimeInMillis());
+        intent.putExtra(Events.TITLE, presentation.getProgramme());
+        intent.putExtra(Events.DESCRIPTION, presentation.getProgramme());
+        intent.putExtra(Events.EVENT_LOCATION, presentation.getLieu());
+        intent.putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY);
+
+        startActivity(intent);
+
+        // Calendar beginTime = Calendar.getInstance();
+        // beginTime.set(2012, 0, 19, 7, 30);
+        // Calendar endTime = Calendar.getInstance();
+        // endTime.set(2012, 0, 19, 11, 30);
+        // Intent intent =
+        // new Intent(Intent.ACTION_INSERT).setData(Events.CONTENT_URI).setType(
+        // "vnd.android.cursor.item/event").putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+        // beginTime.getTimeInMillis()).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+        // endTime.getTimeInMillis()).putExtra(Events.TITLE, "Yoga").putExtra(
+        // Events.DESCRIPTION, "Group class").putExtra(Events.EVENT_LOCATION, "The gym")
+        // .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY).putExtra(
+        // Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com");
+        // startActivity(intent);
+
+      };
+
+    };
+
+    addToCalendarButton.setOnClickListener(calenderOnClickListener);
 
   }
-
-  @Override
-  public void onClick(View v) {
-    Calendar begintime = Calendar.getInstance();
-    begintime = presentation.getDateDebut();
-
-    Calendar endtime = Calendar.getInstance();
-    endtime = presentation.getDateFin();
-
-    // Intent intent = new Intent(Intent.ACTION_INSERT);
-    // intent.setData(Events.CONTENT_URI);
-    // intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, begintime.getTimeInMillis());
-    // intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endtime.getTimeInMillis());
-    // intent.putExtra(Events.TITLE, presentation.getProgramme());
-    // intent.putExtra(Events.DESCRIPTION, presentation.getProgramme());
-    // intent.putExtra(Events.EVENT_LOCATION, presentation.getLieu());
-    // intent.putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY);
-    //
-    // startActivity(intent);
-    SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-    sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-    boolean calenderCreated = sharedpreferences.getBoolean("ConferenceCalendar", false);
-
-    if (calenderCreated) {
-      long calId = sharedpreferences.getLong("CalendarID", -1);
-      if (calId == -1) {
-        // no calendar account; react meaningfully
-        Toast.makeText(getApplicationContext(), "calid is -1 : " + calId, Toast.LENGTH_LONG).show();
-        return;
-      }
-      ContentResolver cr = getContentResolver();
-      ContentValues values = new ContentValues();
-      values.put(Events.CALENDAR_ID, calId);
-      values.put(Events.TITLE, presentation.getProgramme());
-      values.put(Events.DTSTART, begintime.getTimeInMillis());
-      values.put(Events.DTEND, endtime.getTimeInMillis());
-      values.put(Events.EVENT_LOCATION, presentation.getLieu());
-      values.put(Events.DESCRIPTION, presentation.getAuteur());
-      values.put(Events.AVAILABILITY, Events.AVAILABILITY_BUSY);
-      values.put(Events.EVENT_TIMEZONE, TimeZone.getDefault().getDisplayName());
-      cr.insert(Events.CONTENT_URI, values);
-
-      Toast.makeText(getApplicationContext(), "Presentation event added to calendar " + calId,
-          Toast.LENGTH_LONG).show();
-    } else {
-      Toast.makeText(getApplicationContext(), "ERROR: Calendar not yet created", Toast.LENGTH_LONG)
-          .show();
-
-    }
-
-  }
-
 }
