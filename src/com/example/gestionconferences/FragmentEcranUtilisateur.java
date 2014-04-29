@@ -46,7 +46,6 @@ public class FragmentEcranUtilisateur extends Fragment {
     boutonConferenceProche.setOnTouchListener(new MonBoutonClickListener());
     Button boutonOptions = (Button) myFragmentView.findViewById(R.id.boutonOptions);
     boutonOptions.setOnTouchListener(new MonBoutonClickListener());
-
   }
 
   public class MonBoutonClickListener implements View.OnTouchListener {
@@ -66,8 +65,8 @@ public class FragmentEcranUtilisateur extends Fragment {
 
         if (v == (Button) myFragmentView.findViewById(R.id.boutonCalendrier)) {
 
-          Intent i = new Intent(getActivity(),CalendrierActivity.class);
-          //i.setClassName("com.android.calendar", "com.android.calendar.CalendrierActivity");
+          Intent i = new Intent(getActivity(), CalendrierActivity.class);
+          // i.setClassName("com.android.calendar", "com.android.calendar.CalendrierActivity");
           startActivity(i);
 
         } else if (v == (Button) myFragmentView.findViewById(R.id.boutonMesConferences)) {
