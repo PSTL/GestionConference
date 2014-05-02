@@ -19,6 +19,11 @@ public final class R {
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
 
@@ -128,20 +133,21 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int layout_choix_date=0x7f030001;
-        public static final int layout_dialogue_choix_manuel_import=0x7f030002;
-        public static final int layout_ecran_admin=0x7f030003;
-        public static final int layout_ecran_calendrier=0x7f030004;
-        public static final int layout_ecran_nouvelle_conference=0x7f030005;
-        public static final int layout_ecran_utilisateur=0x7f030006;
-        public static final int layout_nouvelle_presentation=0x7f030007;
-        public static final int layout_time_picker=0x7f030008;
-        public static final int list_view_list_activity=0x7f030009;
-        public static final int list_view_presentation=0x7f03000a;
-        public static final int mesconf_fragment=0x7f03000b;
-        public static final int option=0x7f03000c;
-        public static final int presentation_fragment=0x7f03000d;
-        public static final int presentation_view=0x7f03000e;
+        public static final int fragment_main=0x7f030001;
+        public static final int layout_choix_date=0x7f030002;
+        public static final int layout_dialogue_choix_manuel_import=0x7f030003;
+        public static final int layout_ecran_admin=0x7f030004;
+        public static final int layout_ecran_calendrier=0x7f030005;
+        public static final int layout_ecran_nouvelle_conference=0x7f030006;
+        public static final int layout_ecran_utilisateur=0x7f030007;
+        public static final int layout_nouvelle_presentation=0x7f030008;
+        public static final int layout_time_picker=0x7f030009;
+        public static final int list_view_list_activity=0x7f03000a;
+        public static final int list_view_presentation=0x7f03000b;
+        public static final int mesconf_fragment=0x7f03000c;
+        public static final int option=0x7f03000d;
+        public static final int presentation_fragment=0x7f03000e;
+        public static final int presentation_view=0x7f03000f;
     }
     public static final class menu {
         public static final int main=0x7f080000;

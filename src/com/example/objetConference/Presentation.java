@@ -66,10 +66,5 @@ public class Presentation implements Serializable {
   public void setProgramme(String programme) {
     this.programme = programme;
   }
-  
-  
-  public int jourDebut(){
-	  return dateDebut.DAY_OF_MONTH;
-  }
 
 }
