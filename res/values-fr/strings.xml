@@ -32,10 +32,9 @@
     <string name="english">Anglais</string>
     <string name="french">Français</string>
 
-    
     <!-- Buttons -->
     <string name="addToCalendar">Ajouter au Calendrier</string>
-    
+
     <!-- Mois -->
     <string name="janvier">Janvier</string>
     <string name="Fevrier">Fevrier</string>
@@ -49,5 +48,10 @@
     <string name="Octobre">Octobre</string>
     <string name="Novembre">Novembre</string>
     <string name="Decembre">Decembre</string>
+
+    <!-- Application strings -->
+    <string name="notimplemented">Cette fonctionnalité n\'est pas disponible sur cette version</string>
+    <string name="confcreated">Conférence créée avec succès</string>
+    <string name="fileadded">Fichier ajouté dans Mes Conférences</string>
 
 </resources>

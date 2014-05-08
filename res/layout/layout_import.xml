@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:id="@+id/linearLayoutImport"
+    android:layout_height="wrap_content"
+    android:background="@android:drawable/dialog_holo_light_frame"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvMesconf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF7F24"
+        android:gravity="center_horizontal"
+        android:text="@string/myconference"
+        android:textSize="35sp" />
+
+    
+
+</LinearLayout>

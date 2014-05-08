@@ -22,7 +22,7 @@
     <string name="nearconference">Nearby conferences</string> <!-- find a better name -->
     <string name="newconference">New Conference</string>
     <string name="conferencename">Conference name</string>
-    <string name="conferenceLocation">Cconference location</string>
+    <string name="conferenceLocation">Conference location</string>
     <string name="conferenceStartDate">Conference starts at</string>
     <string name="conferenceEndDate">Conference ends at</string>
     <string name="conferenceDescription">Conference description</string>
@@ -31,10 +31,9 @@
     <string name="english">English</string>
     <string name="french">French</string>
 
-     <!-- Buttons -->
+    <!-- Buttons -->
     <string name="addToCalendar">Add to Calendar</string>
-    
-    
+
     <!-- Months -->
     <string name="janvier">January</string>
     <string name="Fevrier">February</string>
@@ -48,5 +47,10 @@
     <string name="Octobre">October</string>
     <string name="Novembre">November</string>
     <string name="Decembre">December</string>
+
+    <!-- Application Strings -->
+    <string name="notimplemented">This feature is not available on this version</string>
+    <string name="confcreated">Conference created successfully</string>
+    <string name="fileadded">File added to My Conferences</string>
 
 </resources>

@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout 
-    android:layout_width="200dp"
-    android:layout_height="match_parent"
-    android:orientation="vertical" 
-      android:background="#0099cc">
+    android:layout_height="match_parent" >
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center" >
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:background="#0099cc"
+        android:orientation="vertical" >
 
-        <RadioButton
+        <RadioGroup
+            android:id="@+id/radioGroupChoix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manuel"
-             android:checked="true" 
-            android:id="@+id/radioButtonManuel"
-           />
+            android:layout_gravity="center"
+            android:orientation="vertical" >
 
-        <RadioButton
+            <RadioButton
+                android:id="@+id/radioButtonManuel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Manuel" />
+
+           
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/boutonValiderChoixManuel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:id="@+id/radioButtonImport"
-            android:text="Import"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/valide" />
+    </LinearLayout>
 
-    </RadioGroup>
-    
-    
-    <Button 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/valide"
-        android:id="@+id/boutonValiderChoixManuel"
-        android:layout_gravity="center"
-        />
-
-</LinearLayout>
 </ScrollView>
