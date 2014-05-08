@@ -1,48 +1,63 @@
-package fr.upmc.pstl.gestionconference;
+package fr.upmc.pstl.gestionconference; 
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.provider.CalendarContract.Calendars;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.accounts.Account; 
+import android.accounts.AccountManager; 
+import android.content.ContentValues; 
+import android.content.Context; 
+import android.content.Intent; 
+import android.content.SharedPreferences; 
+import android.content.SharedPreferences.Editor; 
+import android.database.Cursor; 
+import android.net.Uri; 
+import android.os.Bundle; 
+import android.provider.CalendarContract; 
+import android.provider.CalendarContract.Calendars; 
+import android.support.v4.app.Fragment; 
+import android.support.v4.app.FragmentActivity; 
+import android.support.v4.app.FragmentManager; 
+import android.support.v4.app.FragmentTransaction; 
+import android.view.Menu; 
+import android.view.MotionEvent; 
+import android.view.View; 
+import android.widget.Button; 
+import android.widget.Toast; 
 
-public class MainActivity extends FragmentActivity {
+public  class  MainActivity  extends FragmentActivity {
+	
+  private String mFragment;
 
-  String mFragment;
+	
+  private FragmentEcranUtilisateur fragmentEcranUtilisateur;
 
-  FragmentEcranUtilisateur fragmentEcranUtilisateur;
-
+	
   public final FragmentManager fragmentmanager = getSupportFragmentManager();
+
+	
 
   private String accountName;
 
+	
   public static boolean calenderCreated = false;
+
+	
 
   public static final String MyPREFERENCES = "MyPrefs";
 
+	
+
   public static SharedPreferences sharedpreferences;
+
+	
 
   private Editor editor;
 
+	
   private boolean firstTime;
 
-  long calid;
+	
+  private long calid;
+
+	
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +104,8 @@ public class MainActivity extends FragmentActivity {
 
   }
 
+	
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -96,7 +113,9 @@ public class MainActivity extends FragmentActivity {
     return true;
   }
 
-  private void setupFragments__wrappee__Base() {
+	
+
+  private void setupFragments() {
     // final FragmentManager fm = getSupportFragmentManager();
 
     this.fragmentEcranUtilisateur =
@@ -110,14 +129,7 @@ public class MainActivity extends FragmentActivity {
 
   }
 
-  private void setupFragments() {
-    setupFragments__wrappee__Base();
-    this.fragmentEcranAdmin =
-        (FragmentEcranAdmin) fragmentmanager.findFragmentByTag(FragmentEcranAdmin.TAG);
-    if (this.fragmentEcranAdmin == null) {
-      this.fragmentEcranAdmin = new FragmentEcranAdmin();
-    }
-  }
+	
 
   public void showFragment(final Fragment fragment) {
     if (fragment == null)
@@ -132,9 +144,14 @@ public class MainActivity extends FragmentActivity {
     ft.commit();
   }
 
+	
+
   public void affichageAdmin(View v) {
-    showFragment(this.fragmentEcranAdmin);
+    String notAvailable = getResources().getString(R.string.notimplemented);
+    Toast.makeText(this, notAvailable, Toast.LENGTH_SHORT).show();
   }
+
+	
 
   public void affichageUtilisateur(View v) {
 
@@ -142,7 +159,10 @@ public class MainActivity extends FragmentActivity {
 
   }
 
-  public class MonBoutonClickListener implements View.OnTouchListener {
+	
+
+  public  class  MonBoutonClickListener  implements View.OnTouchListener {
+		
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -168,7 +188,10 @@ public class MainActivity extends FragmentActivity {
       return true;
     }
 
-  }
+
+	}
+
+	
 
   private long createCalendar() {
     ContentValues values = new ContentValues();
@@ -190,6 +213,8 @@ public class MainActivity extends FragmentActivity {
     Uri uri = getContentResolver().insert(builder.build(), values);
     return Long.parseLong(uri.getLastPathSegment());
   }
+
+	
 
   private long calenderId() {
     Cursor cursor =
@@ -213,6 +238,8 @@ public class MainActivity extends FragmentActivity {
     return -1;
   }
 
+	
+
   private String getAccountName() {
     AccountManager manager = (AccountManager) getSystemService(ACCOUNT_SERVICE);
     Account[] list = manager.getAccounts();
@@ -227,6 +254,5 @@ public class MainActivity extends FragmentActivity {
     return gmail;
   }
 
-  private FragmentEcranAdmin fragmentEcranAdmin;
 
 }

@@ -22,7 +22,7 @@ public  class  MyPresFragment  extends ListFragment {
   private TextView title, description, startDate, endDate, location;
 
 	
-  Conference conference;
+  private Conference conference;
 
 	
   private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -78,7 +78,6 @@ public  class  MyPresFragment  extends ListFragment {
 
   @Override
   public void onListItemClick(ListView l, View v, int position, long id) {
-    // MyPresentation presentation = (MyPresentation) adapter.getItem(position);
     Presentation presentation = (Presentation) adapter.getItem(position);
 
     // Open an activity with the presentation values

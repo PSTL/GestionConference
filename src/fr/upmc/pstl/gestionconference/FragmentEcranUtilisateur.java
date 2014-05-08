@@ -1,7 +1,6 @@
 package fr.upmc.pstl.gestionconference; 
 
 import fr.upmc.pstl.gestionconference.R; 
-
 import android.content.Intent; 
 import android.os.Bundle; 
 import android.support.v4.app.Fragment; 
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button; 
 import android.widget.Toast; 
 
-public   class  FragmentEcranUtilisateur  extends Fragment {
+public  class  FragmentEcranUtilisateur  extends Fragment {
 	
 
   public final static String TAG = "fragmentEcranUtilisateur";
@@ -49,7 +48,7 @@ public   class  FragmentEcranUtilisateur  extends Fragment {
 
 	
 
-   private void  ajouterListenerBoutons__wrappee__Base  () {
+  public void ajouterListenerBoutons() {
     boutonAdmin.setVisibility(View.GONE);
 
     // Selection de tous les boutons
@@ -63,31 +62,6 @@ public   class  FragmentEcranUtilisateur  extends Fragment {
 
     boutonOptions = (Button) myFragmentView.findViewById(R.id.boutonOptions);
     boutonOptions.setOnTouchListener(new NotAvailableClickListener());
-  }
-
-	
-
-   private void  ajouterListenerBoutons__wrappee__Languages  () {
-    ajouterListenerBoutons__wrappee__Base();
-
-    boutonOptions.setOnTouchListener(new OptionClickListener());
-
-  }
-
-	
-
-
-   private void  ajouterListenerBoutons__wrappee__Admin  () {
-    ajouterListenerBoutons__wrappee__Languages();
-    boutonAdmin.setVisibility(View.VISIBLE);
-  }
-
-	
-
-  public void ajouterListenerBoutons() {
-    ajouterListenerBoutons__wrappee__Admin();
-
-    boutonCalendrier.setOnTouchListener(new CalendarClickListener());
   }
 
 	
@@ -135,63 +109,6 @@ public   class  FragmentEcranUtilisateur  extends Fragment {
       } else if (action == MotionEvent.ACTION_UP) {
         v.setBackgroundResource(R.drawable.rounded_button);
         Toast.makeText(getActivity(), NOT_AVAILABLE, Toast.LENGTH_SHORT).show();
-      }
-
-      return true;
-    }
-
-
-	}
-
-	
-
-  public  class  OptionClickListener  implements View.OnTouchListener {
-		
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-
-      int action = event.getActionMasked();
-
-      if (action == MotionEvent.ACTION_DOWN) {
-        v.setBackgroundResource(R.drawable.rounded_button_clicked);
-
-      }
-      if (action == MotionEvent.ACTION_UP) {
-        v.setBackgroundResource(R.drawable.rounded_button);
-
-        if (v == (Button) myFragmentView.findViewById(R.id.boutonOptions)) {
-          Intent intent = new Intent(getActivity(), Option.class);
-          startActivity(intent);
-        }
-      }
-
-      return true;
-    }
-
-
-	}
-
-	
-
-  public  class  CalendarClickListener  implements View.OnTouchListener {
-		
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-
-      int action = event.getActionMasked();
-
-      if (action == MotionEvent.ACTION_DOWN) {
-        v.setBackgroundResource(R.drawable.rounded_button_clicked);
-
-      }
-      
-      if (action == MotionEvent.ACTION_UP) {
-        v.setBackgroundResource(R.drawable.rounded_button);
-
-        Intent intent = new Intent(getActivity(), CalendrierActivity.class);
-        startActivity(intent);
       }
 
       return true;

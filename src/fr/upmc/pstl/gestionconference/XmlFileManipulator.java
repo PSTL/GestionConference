@@ -1,4 +1,4 @@
-package fr.upmc.pstl.gestionconference;  
+package fr.upmc.pstl.gestionconference; 
 
 import java.io.File; 
 import java.io.FileInputStream; 
@@ -45,26 +45,12 @@ public  class  XmlFileManipulator {
       serializer.startTag("", "datedebut");
       cal = conference.getDateDebut();
 
-      // set conference date debut
-      // sb.append(cal.get(Calendar.DAY_OF_MONTH));
-      // sb.append("/");
-      // sb.append(cal.get(Calendar.MONTH));
-      // sb.append("/");
-      // sb.append(cal.get(Calendar.YEAR));
-
       serializer.text(dateFormat.format(cal.getTime()));
       serializer.endTag("", "datedebut");
 
       serializer.startTag("", "datefin");
       cal = conference.getDateFin();
       sb = new StringBuilder();
-
-      // Set conference date din
-      // sb.append(cal.get(Calendar.DAY_OF_MONTH));
-      // sb.append("/");
-      // sb.append(cal.get(Calendar.MONTH));
-      // sb.append("/");
-      // sb.append(cal.get(Calendar.YEAR));
 
       serializer.text(dateFormat.format(cal.getTime()));
       serializer.endTag("", "datefin");
@@ -352,7 +338,6 @@ public  class  XmlFileManipulator {
           new File(Environment.getExternalStorageDirectory().getAbsolutePath()
               + "/dossierConferences/", filename);
 
-      // InputStream inputStream = openFileInput(file);
       FileInputStream fis = new FileInputStream(file);
 
       StringBuffer fileContent = new StringBuffer("");
@@ -367,7 +352,7 @@ public  class  XmlFileManipulator {
       fis.close();
 
     } catch (FileNotFoundException e) {
-      // Log.e("login activity", "File not found: " + e.toString());
+      e.printStackTrace();
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     } catch (IOException e) {

@@ -1,11 +1,9 @@
 package fr.upmc.pstl.gestionconference; 
 
-
 import android.os.Bundle; 
 import android.support.v4.app.FragmentActivity; 
 import android.support.v4.app.FragmentManager; 
 import android.support.v4.app.FragmentTransaction; 
-
 
 public  class  MyPresentationActivity  extends FragmentActivity {
 	
@@ -20,7 +18,7 @@ public  class  MyPresentationActivity  extends FragmentActivity {
 
     ft.replace(R.id.frame, new MyPresFragment());
 
-    // ft.addToBackStack(null);
+    ft.addToBackStack(null);
     ft.commit();
   }
 

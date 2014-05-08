@@ -14,7 +14,6 @@ import android.widget.TextView;
 public  class  MyPresAdapter  extends BaseAdapter {
 	
 
-  // List<MyPresentation> list = MyPresentation.getDataForListView();
   List<Presentation> list = new ArrayList<Presentation>();
 
 	
